@@ -18,7 +18,7 @@ const { pixivDownload } = require('../scraper/pixiv')
 const { igStory, igStalk, igDownload } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
 const zipi = require('../scraper/zippy')
-const scrp = require('../scraper/scraper21')
+const scrp = require('../scraper/scrape21')
 const scrapper = require('../scraper/scrapper')
 const tod = require('../scraper/testapi')
 
@@ -241,7 +241,7 @@ router.get('/spotify', async(req, res) => {
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await spotifydl.getTrack(link)
 	try {
-		res.json({ info: hasil, dl_lnk: `https://tyz-api.herokuapp.com/downloader/spotifydl?link=${link}` })
+		res.json({ info: hasil, dl_lnk: `${link}` })
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
@@ -260,15 +260,6 @@ router.get('/stickerpack', async(req, res) => {
 })
 router.get('/randomgore', async(req, res) => {
 	var hasil = await scrapper.randomgore()
-	try {
-		res.json(hasil)
-	} catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
-})
-router.get('/porntiktok', async(req, res) => {
-	var hasil = await scrapper.pornvid()
 	try {
 		res.json(hasil)
 	} catch(err) {
