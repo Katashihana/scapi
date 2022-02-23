@@ -2,6 +2,7 @@ const express = require('express')
 var router = express.Router();
 const hxz = require('hxz-api')
 const yts = require('yt-search')
+const fbdown = require('fb-tools')
 const axios = require('axios')
 __path = process.cwd()
 const fs = require('fs')
@@ -272,6 +273,17 @@ router.get('/jobs', async(req, res) => {
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await scrapper.jobsearch(query)
 	res.json({ result })
+})
+router.get('/fbdownloads', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await fbdown.getVideoUrl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 module.exports = router
