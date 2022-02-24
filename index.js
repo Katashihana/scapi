@@ -1,6 +1,6 @@
 const express = require('express')
 const secure = require('ssl-express-www')
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080 || 5000 || 3000;
 const morgan = require('morgan')
 const multer = require('multer')
 const path = require('path')
