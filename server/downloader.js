@@ -19,6 +19,7 @@ const { igStory, igStalk, igDownload } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
 const zipi = require('../scraper/zippy')
 const scrapper = require('../scraper/scrapper')
+const { fetchJson, getBase64, kyun, createExif } = require('../scraper/fetch')
 
 async function shorts(url) {
   const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
@@ -264,10 +265,10 @@ router.get('/anoboydl', async(req, res) => {
 		res.json({ message: 'Ups, error' })
 	}
 })
-router.get('/happymoddl', async(req, res) => {
+router.get('/owner', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await scrapper.happymoddl(link)
+	var hasil = await fetchJson(`https://raw.githubusercontent.com/Katashihana/scapi/master/scraper/apiweb.json`)
 	try {
 		res.json(hasil)
 	} catch(err) {
