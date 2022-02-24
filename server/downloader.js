@@ -1,7 +1,6 @@
 const express = require('express')
 var router = express.Router();
 const hxz = require('hxz-api')
-const yts = require('yt-search')
 const fbdown = require('fb-tools')
 const axios = require('axios')
 __path = process.cwd()
@@ -136,20 +135,6 @@ router.get('/youtube', async(req, res) => {
 			audio: audioUrl,
 			video: videoUrl,
 		})
-	} catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
-})
-router.get('/play', async(req, res) => {
-	var query = req.query.query
-	if (!query) return res.json({ message: 'masukan parameter query' })
-	let results = await yts(query)
-  	let vid = results.all.find(video => video.seconds < 3600)
-	if (!vid) return res.json({ message: 'not found!'})
-	var hasil = await axios.get('https://tyz-api.herokuapp.com/downloader/youtube?link='+vid.url)
-	try {
-		res.json(hasil.data)
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
