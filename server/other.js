@@ -2,6 +2,8 @@ const express = require('express')
 var router = express.Router();
 const { getBuffer } = require('../lib/function')
 const { merdekaNews } = require('../scraper/merdekanews')
+const scrp = require('../scraper/scrape21')
+const tod = require('../scraper/testapi')
 const fs = require('fs')
 __path = process.cwd()
 
@@ -46,8 +48,21 @@ router.get('/ssweb', async(req, res) => {
     await res.sendFile(__path +'/tmp/ssweb.png')
 })
 
+///News
 router.get('/merdeka', async(req, res) => {
  const result = await merdekaNews()
+ res.json({ result })
+})
+router.get('/tribunnews', async(req, res) => {
+ const result = await tod.tribunnews()
+ res.json({ result })
+})
+router.get('/kompasnews', async(req, res) => {
+ const result = await tod.kompasnews()
+ res.json({ result })
+})
+router.get('/cnn', async(req, res) => {
+ const result = await tod.cnn()
  res.json({ result })
 })
 
@@ -85,5 +100,10 @@ router.get('/meme', async (req, res) => {
          comments: comments 
     });
  })
+ ///Bmkg
+router.get('/gempa', async(req, res) => {
+ const result = await scrp.gempa()
+ res.json({ result })
+})
 
 module.exports = router

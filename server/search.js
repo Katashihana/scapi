@@ -125,6 +125,18 @@ router.get('/sfilesearch', async(req, res) => {
 	var result = await tod.sfilesearch(query)
 	res.json({ result })
 })
+router.get('/palingmurah', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await tod.palingmurah(query)
+	res.json({ result })
+})
+router.get('/mui', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await tod.muihalal(query)
+	res.json({ result })
+})
 
 
 module.exports = router
