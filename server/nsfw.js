@@ -14,6 +14,7 @@ async function sleep(ms) {
 
 const { doujindesu } = require('../scraper/index') 
 const scrapper = require('../scraper/scrapper')
+const neko = require('../scraper/nekopoi')
 
 router.get('/nHentai', async (req, res) => {
         var code = req.query.code
@@ -31,6 +32,26 @@ router.get('/randomgore', async(req, res) => {
 })
 router.get('/hentaivideo', async(req, res) => {
 	var hasil = await scrapper.hentaivid()
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/nekopoi/latest', async(req, res) => {
+	var hasil = await neko.getLatest()
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/nekopoi/info', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await neko.getVideo(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
