@@ -13,11 +13,30 @@ async function sleep(ms) {
 }
 
 const { doujindesu } = require('../scraper/index') 
+const scrapper = require('../scraper/scrapper')
 
 router.get('/nHentai', async (req, res) => {
         var code = req.query.code
         var result = await nhentai.getDoujin(`${code}`)
 		    res.json({ result })
+})
+router.get('/randomgore', async(req, res) => {
+	var hasil = await scrapper.randomgore()
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/hentaivideo', async(req, res) => {
+	var hasil = await scrapper.hentaivid()
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/nHentaiSearch', async (req, res) => {
         var query = req.query.query
@@ -32,8 +51,8 @@ router.get('/doujindesuSearch', async (req, res) => {
 })
 router.get('/nhentaipdf', async (req, res) => {
 	var code = req.query.code
-	var nhres = `https://tyz-api.herokuapp.com/nsfw/nhcode?query=${code}`
-	var nhread = `https://tyz-api.herokuapp.com/nsfw/nhread?query=${code}`
+	var nhres = `https://api-katashi.herokuapp.com/nsfw/nhcode?query=${code}`
+	var nhread = `https://api-katashi.herokuapp.com/nsfw/nhread?query=${code}`
 	res.json({
 		pdf: nhres,
 		read: nhread,
@@ -43,7 +62,7 @@ router.get('/nhentaipdf', async (req, res) => {
 router.get('/nhcode', async (req, res) => {
         try {
 	var query = req.query.query
-	let data = await axios.get('https://tyz-api.herokuapp.com/nsfw/nHentai?code='+query)
+	let data = await axios.get('https://api-katashi.herokuapp.com/nsfw/nHentai?code='+query)
     	let restjson = data.data.result.pages
 	let title = data.data.result.title
     	let duckJson = await restjson.map(a => 'https://external-content.duckduckgo.com/iu/?u=' + a)
@@ -58,7 +77,7 @@ router.get('/nhcode', async (req, res) => {
 })
 router.get('/nhread', async(req, res) => {
 	var query = req.query.query
-	let data = await axios.get('https://tyz-api.herokuapp.com/nsfw/nHentai?code='+query)
+	let data = await axios.get('https://api-katashi.herokuapp.com/nsfw/nHentai?code='+query)
 	let restjson = data.data.result.pages
 	let title = data.data.result.title
 	let duckJson = await restjson.map(a => 'https://external-content.duckduckgo.com/iu/?u=' + a)

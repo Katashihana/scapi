@@ -7,6 +7,7 @@ const { getBuffer } = require('../lib/function')
 const { dl } = require('../scraper/aiovideodl')
 
 const mynimeku = require('../scraper/mynime')
+const scrapper = require('../scraper/scrapper')
 
 
 async function sleep(ms) {
@@ -44,6 +45,36 @@ router.get('/storyanime', async(req, res) => {
   const buffer = await getBuffer(dl_link.medias[0].url)
   await fs.writeFileSync(__path +`/tmp/audio.mp4`, buffer)
   await res.sendFile(__path +`/tmp/audio.mp4`)
+})
+router.get('/dewabatch', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrapper.dewabatch(query)
+	res.json({ result })
+})
+router.get('/anoboys', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrapper.anoboys(query)
+	res.json({ result })
+})
+router.get('/manga', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrapper.manga(query)
+	res.json({ result })
+})
+router.get('/animeplanet', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrapper.anime(query)
+	res.json({ result })
+})
+router.get('/animeplanetchara', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrapper.chara(query)
+	res.json({ result })
 })
 
 

@@ -18,9 +18,7 @@ const { pixivDownload } = require('../scraper/pixiv')
 const { igStory, igStalk, igDownload } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
 const zipi = require('../scraper/zippy')
-const scrp = require('../scraper/scrape21')
 const scrapper = require('../scraper/scrapper')
-const tod = require('../scraper/testapi')
 
 async function shorts(url) {
   const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
@@ -244,8 +242,10 @@ router.get('/stickerpack', async(req, res) => {
 		res.json({ message: 'Ups, error' })
 	}
 })
-router.get('/randomgore', async(req, res) => {
-	var hasil = await scrapper.randomgore()
+router.get('/sfiledown', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await scrapper.sfiledown(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
@@ -253,16 +253,21 @@ router.get('/randomgore', async(req, res) => {
 		res.json({ message: 'Ups, error' })
 	}
 })
-router.get('/jobs', async(req, res) => {
-	var query = req.query.query
-	if (!query) return res.json({ message: 'masukan parameter query' })
-	var result = await scrapper.jobsearch(query)
-	res.json({ result })
-})
-router.get('/fbdownloads', async(req, res) => {
+router.get('/anoboydl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await fbdown.getVideoUrl(link)
+	var hasil = await scrapper.anoboydl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/happymoddl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await scrapper.happymoddl(link)
 	try {
 		res.json(hasil)
 	} catch(err) {

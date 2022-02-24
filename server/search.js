@@ -12,6 +12,9 @@ const { savetikVideo } = require('../scraper/savetik')
 const { happymodSearch } = require('../scraper/happymod')
 const { searchIlust } = require('../scraper/pixiv')
 const { tiktokHastag } = require('../scraper/tiktok_search')
+const scrapper = require('../scraper/scrapper')
+const scrp = require('../scraper/scrape21')
+const tod = require('../scraper/testapi')
 
 
 //Biar Result nya 20
@@ -110,5 +113,18 @@ router.get('/sticker', async(req, res) => {
 	var result = await stickerSearch(query)
 	res.json({ result })
 })
+router.get('/searchgore', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrapper.searchgore(query)
+	res.json({ result })
+})
+router.get('/sfilesearch', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await tod.sfilesearch(query)
+	res.json({ result })
+})
+
 
 module.exports = router
