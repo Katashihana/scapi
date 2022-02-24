@@ -35,6 +35,6 @@
     "path": "^0.12.7",
     "pdfkit": "^0.13.0",
     "ssl-express-www": "^3.0.8",
-    "tiktok-scraper": "^1.4.36",
+    "tiktok-scraper": "^1.4.36"
   }
 }
