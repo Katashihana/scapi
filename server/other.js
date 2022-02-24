@@ -62,7 +62,7 @@ router.get('/kompasnews', async(req, res) => {
  res.json({ result })
 })
 router.get('/cnn', async(req, res) => {
- const result = await tod.cnn()
+ const result = await scrp.cnn()
  res.json({ result })
 })
 

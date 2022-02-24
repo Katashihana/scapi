@@ -264,10 +264,10 @@ router.get('/anoboydl', async(req, res) => {
 		res.json({ message: 'Ups, error' })
 	}
 })
-router.get('/happymoddl', async(req, res) => {
+router.get('/fbdown', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await scrapper.happymoddl(link)
+	var hasil = await fbdown.getInfo(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
