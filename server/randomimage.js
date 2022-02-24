@@ -19,6 +19,10 @@ router.get('/akaneko', async(req, res) => {
     await res.sendFile(__path +'/tmp/image.png')
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/image.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/waifu', async(req, res) => {
 	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/waifu.json`)).data
@@ -28,6 +32,10 @@ router.get('/waifu', async(req, res) => {
     await res.sendFile(__path +'/tmp/waifu.png')
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/waifu.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/husbu', async(req, res) => {
 	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/husbu.json`)).data
@@ -37,6 +45,10 @@ router.get('/husbu', async(req, res) => {
     await res.sendFile(__path +'/tmp/waifu.png')
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/waifu.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/loli', async(req, res) => {
 	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/loli.json`)).data
@@ -46,6 +58,10 @@ router.get('/loli', async(req, res) => {
     await res.sendFile(__path +'/tmp/waifu.png')
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/waifu.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/milf', async(req, res) => {
 	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/milf.json`)).data
@@ -55,6 +71,10 @@ router.get('/milf', async(req, res) => {
     await res.sendFile(__path +'/tmp/waifu.png')
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/waifu.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/cosplay', async(req, res) => {
 	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/cosplay.json`)).data
@@ -64,6 +84,10 @@ router.get('/cosplay', async(req, res) => {
     await res.sendFile(__path +'/tmp/waifu.png')
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/waifu.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 module.exports = router

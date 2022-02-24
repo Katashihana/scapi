@@ -18,7 +18,11 @@ const UrlPhotooxy = {
 	flower_heart: 'https://photooxy.com/logo-and-text-effects/text-inside-the-flower-heart-369.html',
 	wodden_board: 'https://photooxy.com/logo-and-text-effects/writing-on-wooden-boards-368.html',
 	glowing_neon: 'https://photooxy.com/logo-and-text-effects/make-smoky-neon-glow-effect-343.html'
-}
+}.catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
 
 router.get('/photooxy1', async (req, res) => {
 	var text = req.query.text
@@ -35,7 +39,7 @@ router.get('/photooxy1', async (req, res) => {
 	var getBuffer = await Buffer.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
-	} catch(err) {
+	}.catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -58,7 +62,7 @@ router.get('/photooxy2', async (req, res) => {
 	var getBuffer = await Buffer.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
-	} catch(err) {
+	}.catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -70,6 +74,10 @@ router.get('/shadow', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/cup', async (req, res) => {
 	var text = req.query.text
@@ -78,6 +86,10 @@ router.get('/cup', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/captain_amerika', async (req, res) => {
 	var text = req.query.text
@@ -88,6 +100,10 @@ router.get('/captain_amerika', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/romantic', async (req, res) => {
 	var text = req.query.text
@@ -96,6 +112,10 @@ router.get('/romantic', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/smoke', async (req, res) => {
 	var text = req.query.text
@@ -104,6 +124,10 @@ router.get('/smoke', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/burn_paper', async (req, res) => {
 	var text = req.query.text
@@ -112,6 +136,10 @@ router.get('/burn_paper', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/naruto', async (req, res) => {
 	var text = req.query.text
@@ -120,6 +148,10 @@ router.get('/naruto', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/love_message', async (req, res) => {
 	var text = req.query.text
@@ -128,6 +160,10 @@ router.get('/love_message', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/tik_tok', async (req, res) => {
 	var text = req.query.text
@@ -138,6 +174,10 @@ router.get('/tik_tok', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/flower_heart', async (req, res) => {
 	var text = req.query.text
@@ -146,6 +186,10 @@ router.get('/flower_heart', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/wodden_board', async (req, res) => {
 	var text = req.query.text
@@ -154,6 +198,10 @@ router.get('/wodden_board', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/glowing_neon', async (req, res) => {
 	var text = req.query.text
@@ -162,6 +210,10 @@ router.get('/glowing_neon', async (req, res) => {
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 

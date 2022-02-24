@@ -13,6 +13,10 @@ router.get('/artinama', async(req, res) => {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 router.get('/ramalanjodoh', async(req, res) => {
@@ -24,6 +28,10 @@ router.get('/ramalanjodoh', async(req, res) => {
 	try {
 		res.json(hasil)
 	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+}).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}

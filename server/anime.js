@@ -70,12 +70,7 @@ router.get('/animeplanet', async(req, res) => {
 	var result = await scrapper.anime(query)
 	res.json({ result })
 })
-router.get('/animeplanetchara', async(req, res) => {
-	var query = req.query.query
-	if (!query) return res.json({ message: 'masukan parameter query' })
-	var result = await scrapper.chara(query)
-	res.json({ result })
-})
+l
 
 
 module.exports = router

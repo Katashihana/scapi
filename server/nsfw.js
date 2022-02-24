@@ -20,12 +20,16 @@ router.get('/nHentai', async (req, res) => {
         var code = req.query.code
         var result = await nhentai.getDoujin(`${code}`)
 		    res.json({ result })
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/randomgore', async(req, res) => {
 	var hasil = await scrapper.randomgore()
 	try {
 		res.json(hasil)
-	} catch(err) {
+	}.catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -34,27 +38,7 @@ router.get('/hentaivideo', async(req, res) => {
 	var hasil = await scrapper.hentaivid()
 	try {
 		res.json(hasil)
-	} catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
-})
-router.get('/nekopoi/latest', async(req, res) => {
-	var hasil = await neko.getLatest()
-	try {
-		res.json(hasil)
-	} catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
-})
-router.get('/nekopoi/info', async(req, res) => {
-	var link = req.query.link
-	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await neko.getVideo(link)
-	try {
-		res.json(hasil)
-	} catch(err) {
+	}.catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -64,11 +48,19 @@ router.get('/nHentaiSearch', async (req, res) => {
         var hasil = await nana.search(`${query}`)
         var result = hasil.results
 		    res.json({ result })
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/doujindesuSearch', async (req, res) => {
         var query = req.query.query
         var hasil = await doujindesu(`${query}`)
 	res.json(hasil)
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/nhentaipdf', async (req, res) => {
 	var code = req.query.code
@@ -79,6 +71,10 @@ router.get('/nhentaipdf', async (req, res) => {
 		read: nhread,
 		note: 'dosa di tanggung sendiri!'
 	})
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/nhcode', async (req, res) => {
         try {
@@ -95,6 +91,10 @@ router.get('/nhcode', async (req, res) => {
      } catch(err) {
        res.json({ error: err.message }) 
      }
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/nhread', async(req, res) => {
 	var query = req.query.query

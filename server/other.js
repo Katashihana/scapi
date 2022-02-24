@@ -13,6 +13,10 @@ router.get('/nulis', async(req, res) => {
     const data = await getBuffer(`https://rya-kun.herokuapp.com/api/nulis?text=${text}`)
     await fs.writeFileSync(__path +'/tmp/nulis.png', data)
     await res.sendFile(__path +'/tmp/nulis.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 router.get('/ttp', async(req, res) => {
@@ -21,6 +25,10 @@ router.get('/ttp', async(req, res) => {
     const data = await getBuffer(`https://rya-kun.herokuapp.com/api/ttp?text=${text}`)
     await fs.writeFileSync(__path +'/tmp/ttp.png', data)
     await res.sendFile(__path +'/tmp/ttp.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 router.get('/attp', async(req, res) => {
@@ -29,6 +37,10 @@ router.get('/attp', async(req, res) => {
     const data = await getBuffer(`https://rya-kun.herokuapp.com/api/attp?text=${text}`)
     await fs.writeFileSync(__path +'/tmp/attp.png', data)
     await res.sendFile(__path +'/tmp/attp.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 
@@ -38,6 +50,10 @@ router.get('/removebg', async(req, res) => {
     const data = await getBuffer(`https://rya-kun.herokuapp.com/api/removebg?link=${link}`)
     await fs.writeFileSync(__path +'/tmp/removebg.png', data)
     await res.sendFile(__path +'/tmp/removebg.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 router.get('/ssweb', async(req, res) => {
@@ -46,24 +62,63 @@ router.get('/ssweb', async(req, res) => {
     const data = await getBuffer(`https://rya-kun.herokuapp.com/api/ssweb?link=${link}`)
     await fs.writeFileSync(__path +'/tmp/ssweb.png', data)
     await res.sendFile(__path +'/tmp/ssweb.png')
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 ///News
 router.get('/merdeka', async(req, res) => {
  const result = await merdekaNews()
  res.json({ result })
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
+
 router.get('/tribunnews', async(req, res) => {
  const result = await tod.tribunnews()
  res.json({ result })
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
+
 router.get('/kompasnews', async(req, res) => {
  const result = await tod.kompasnews()
  res.json({ result })
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
+
 router.get('/cnn', async(req, res) => {
  const result = await scrp.cnn()
  res.json({ result })
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 //Qrcode
@@ -99,11 +154,19 @@ router.get('/meme', async (req, res) => {
          ups: ups, 
          comments: comments 
     });
- })
+ }).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
  ///Bmkg
 router.get('/gempa', async(req, res) => {
  const result = await scrp.gempa()
  res.json({ result })
+}).catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 module.exports = router
