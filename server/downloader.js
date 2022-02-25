@@ -29,13 +29,12 @@ router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await tiktok(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+		res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
 })
+	
 router.get('/tiktoknowm', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
@@ -66,9 +65,7 @@ router.get('/igdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await igDownload(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+		res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -77,9 +74,7 @@ router.get('/igStory', async(req, res) => {
 	var username = req.query.username
 	if (!username) return res.json({ message: 'masukan parameter username' })
 	var hasil = await igStory(username)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+		res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -88,9 +83,7 @@ router.get('/mediafireDl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await mediafireDl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -99,9 +92,7 @@ router.get('/zippyShare', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await zipi.zippy(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -110,9 +101,7 @@ router.get('/sfiledl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await sfiledl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -157,9 +146,7 @@ router.get('/fbdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await dl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -168,9 +155,7 @@ router.get('/likeedl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await dl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -179,9 +164,7 @@ router.get('/twitter', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await hxz.twitter(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -190,9 +173,7 @@ router.get('/pindl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await pinterestdl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -201,9 +182,7 @@ router.get('/scdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scdl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -235,9 +214,7 @@ router.get('/stickerpack', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await stickerDl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -246,9 +223,7 @@ router.get('/sfiledown', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scrapper.sfiledown(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -257,9 +232,7 @@ router.get('/anoboydl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scrapper.anoboydl(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
@@ -268,9 +241,7 @@ router.get('/fbdown', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await fbdown.getInfo(link)
-	try {
-		res.json(hasil)
-	}.catch(err) {
+	res.json(hasil).catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
 	}
