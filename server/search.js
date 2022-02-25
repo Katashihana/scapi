@@ -25,8 +25,7 @@ router.get('/google', async(req, res) => {
 	var google = require('google-it')
 	var result = google({'query' : `${query}`, limit: 20, disableConsole: true }).then(result => {
 	res.json({ result })
-	}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	})
 })     
 
 router.get('/pinterest', async(req, res) => {
@@ -34,16 +33,12 @@ router.get('/pinterest', async(req, res) => {
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await pinterest(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/pixiv', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await searchIlust(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/konachan', async(req, res) => {
 	var query = req.query.query
@@ -53,8 +48,6 @@ router.get('/konachan', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/konachan.png', data)
    	await res.sendFile(__path +'/tmp/konachan.png')
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/alphacoders', async(req, res) => {
 	var query = req.query.query
@@ -64,8 +57,6 @@ router.get('/alphacoders', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/wallpapercave', async(req, res) => {
 	var query = req.query.query
@@ -75,8 +66,6 @@ router.get('/wallpapercave', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/wallpaperscraft', async(req, res) => {
 	var query = req.query.query
@@ -86,8 +75,6 @@ router.get('/wallpaperscraft', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/wallpaperflare', async(req, res) => {
 	var query = req.query.query
@@ -97,79 +84,58 @@ router.get('/wallpaperflare', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/tiktok', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await tiktokHastag(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/tiktokHastag', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await randomTiktok(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/randomtiktok', async(req, res) => {
 	var result = await savetikVideo()
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/happymod', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await happymodSearch(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/sticker', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await stickerSearch(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/searchgore', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await scrapper.searchgore(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}) 
 router.get('/sfilesearch', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await tod.sfilesearch(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}) 
 router.get('/palingmurah', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await tod.palingmurah(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}) 
 router.get('/mui', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await tod.muihalal(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
-
+}) 
 
 module.exports = router

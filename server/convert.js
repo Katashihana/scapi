@@ -45,8 +45,6 @@ router.get('/towebp', async(req, res) => {
     var stc = await sticker(url)
     await fs.writeFileSync(__path + '/tmp/stc.webp', stc)
 	await res.sendFile(__path + '/tmp/stc.webp')
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/tomp3', async(req, res) => {
     var url = req.query.url 
@@ -55,16 +53,12 @@ router.get('/tomp3', async(req, res) => {
     let audio = await toAudio(getBuffer, 'mp4')
     await fs.writeFileSync(__path + '/tmp/audio.mp3', audio)
 	await res.sendFile(__path + '/tmp/audio.mp3')
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/toFile', async(req, res) => {
      var url = req.query.url 
      const buffer = await getFile(url)
      fs.writeFileSync(__path+ `/tmp/temp.${buffer.ext}`, buffer.data)
      res.sendFile(__path+ `/tmp/temp.${buffer.ext}`)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 
 //Hilih Generator

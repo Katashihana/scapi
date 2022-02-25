@@ -21,8 +21,6 @@ router.get('/mynimekuSearch', async(req, res) => {
   var result = await mynimeku.Search(query)
   if (result > 1) return res.json({ message: 'anime not found!' })
   res.json(result)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 
 router.get('/mynimekuDetail', async(req, res) => {
@@ -30,8 +28,6 @@ router.get('/mynimekuDetail', async(req, res) => {
 	if (!link) return res.json({ message: 'masukan parameter Link' })
    var result = await mynimeku.animeDetail(link)
    res.json(result)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 
 router.get('/mynimekuDownload', async(req, res) => {
@@ -39,8 +35,6 @@ router.get('/mynimekuDownload', async(req, res) => {
 	if (!link) return res.json({ message: 'masukan parameter Link' })
    var result = await mynimeku.downloadEps(link)
    res.json(result)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 
 router.get('/storyanime', async(req, res) => {
@@ -51,41 +45,31 @@ router.get('/storyanime', async(req, res) => {
   const buffer = await getBuffer(dl_link.medias[0].url)
   await fs.writeFileSync(__path +`/tmp/audio.mp4`, buffer)
   await res.sendFile(__path +`/tmp/audio.mp4`)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/dewabatch', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await scrapper.dewabatch(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}) 
 router.get('/anoboys', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await scrapper.anoboys(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}) 
 router.get('/manga', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await scrapper.manga(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}) 
 router.get('/animeplanet', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await scrapper.anime(query)
 	res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}) 
 
 
 module.exports = router

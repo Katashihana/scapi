@@ -1,7 +1,7 @@
 const express = require('express')
 var router = express.Router();
 const hxz = require('hxz-api')
-const fbdown = require('fbdl-core')
+const yts = require('yt-search')
 const axios = require('axios')
 __path = process.cwd()
 const fs = require('fs')
@@ -29,11 +29,13 @@ router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await tiktok(link)
+	try {
 		res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
-	
 router.get('/tiktoknowm', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
@@ -64,41 +66,56 @@ router.get('/igdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await igDownload(link)
+	try {
 		res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/igStory', async(req, res) => {
 	var username = req.query.username
 	if (!username) return res.json({ message: 'masukan parameter username' })
 	var hasil = await igStory(username)
+	try {
 		res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/mediafireDl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await mediafireDl(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/zippyShare', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await zipi.zippy(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/sfiledl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await sfiledl(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/youtube', async(req, res) => {
 	var link = req.query.link
@@ -116,6 +133,20 @@ router.get('/youtube', async(req, res) => {
 			audio: audioUrl,
 			video: videoUrl,
 		})
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/play', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	let results = await yts(query)
+  	let vid = results.all.find(video => video.seconds < 3600)
+	if (!vid) return res.json({ message: 'not found!'})
+	var hasil = await axios.get('https://tyz-api.herokuapp.com/downloader/youtube?link='+vid.url)
+	try {
+		res.json(hasil.data)
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
@@ -140,41 +171,56 @@ router.get('/fbdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await dl(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/likeedl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await dl(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/twitter', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await hxz.twitter(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/pindl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await pinterestdl(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/scdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scdl(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/spotifydl', async(req, res) => {
 	var link = req.query.link
@@ -193,7 +239,7 @@ router.get('/spotify', async(req, res) => {
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await spotifydl.getTrack(link)
 	try {
-		res.json({ info: hasil, dl_lnk: `${link}` })
+		res.json({ info: hasil, dl_lnk: `https://tyz-api.herokuapp.com/downloader/spotifydl?link=${link}` })
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
@@ -203,33 +249,34 @@ router.get('/stickerpack', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await stickerDl(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/sfiledown', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scrapper.sfiledown(link)
+	try {
 	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+  } catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 router.get('/anoboydl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scrapper.anoboydl(link)
+	try {
 	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
-})
-router.get('/fbdown', async(req, res) => {
-	var link = req.query.link
-	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await fbdown.getInfo(link)
-	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
+  } catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
 })
 
 module.exports = router

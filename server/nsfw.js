@@ -14,56 +14,45 @@ async function sleep(ms) {
 
 const { doujindesu } = require('../scraper/index') 
 const scrapper = require('../scraper/scrapper')
-const neko = require('../scraper/nekopoi')
 
 router.get('/nHentai', async (req, res) => {
         var code = req.query.code
         var result = await nhentai.getDoujin(`${code}`)
 		    res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/randomgore', async(req, res) => {
 	var hasil = await scrapper.randomgore()
-		res.json(hasil).catch(e => {
-            res.json({ message: 'Ups, error' })
+		res.json(hasil)
 })
 router.get('/hentaivideo', async(req, res) => {
 	var hasil = await scrapper.hentaivid()
-		res.json(hasil).catch(e => {
-            res.json({ message: 'Ups, error' })
+		res.json(hasil)
 })
 router.get('/nHentaiSearch', async (req, res) => {
         var query = req.query.query
         var hasil = await nana.search(`${query}`)
         var result = hasil.results
 		    res.json({ result })
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/doujindesuSearch', async (req, res) => {
         var query = req.query.query
         var hasil = await doujindesu(`${query}`)
 	res.json(hasil)
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/nhentaipdf', async (req, res) => {
 	var code = req.query.code
-	var nhres = `https://api-katashi.herokuapp.com/nsfw/nhcode?query=${code}`
-	var nhread = `https://api-katashi.herokuapp.com/nsfw/nhread?query=${code}`
+	var nhres = `https://tyz-api.herokuapp.com/nsfw/nhcode?query=${code}`
+	var nhread = `https://tyz-api.herokuapp.com/nsfw/nhread?query=${code}`
 	res.json({
 		pdf: nhres,
 		read: nhread,
 		note: 'dosa di tanggung sendiri!'
 	})
-}).catch(e => {
-            res.json({ message: 'Ups, error' })
 })
 router.get('/nhcode', async (req, res) => {
         try {
 	var query = req.query.query
-	let data = await axios.get('https://api-katashi.herokuapp.com/nsfw/nHentai?code='+query)
+	let data = await axios.get('https://tyz-api.herokuapp.com/nsfw/nHentai?code='+query)
     	let restjson = data.data.result.pages
 	let title = data.data.result.title
     	let duckJson = await restjson.map(a => 'https://external-content.duckduckgo.com/iu/?u=' + a)
@@ -78,7 +67,7 @@ router.get('/nhcode', async (req, res) => {
 })
 router.get('/nhread', async(req, res) => {
 	var query = req.query.query
-	let data = await axios.get('https://api-katashi.herokuapp.com/nsfw/nHentai?code='+query)
+	let data = await axios.get('https://tyz-api.herokuapp.com/nsfw/nHentai?code='+query)
 	let restjson = data.data.result.pages
 	let title = data.data.result.title
 	let duckJson = await restjson.map(a => 'https://external-content.duckduckgo.com/iu/?u=' + a)
