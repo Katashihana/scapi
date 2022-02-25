@@ -18,9 +18,7 @@ const UrlPhotooxy = {
 	flower_heart: 'https://photooxy.com/logo-and-text-effects/text-inside-the-flower-heart-369.html',
 	wodden_board: 'https://photooxy.com/logo-and-text-effects/writing-on-wooden-boards-368.html',
 	glowing_neon: 'https://photooxy.com/logo-and-text-effects/make-smoky-neon-glow-effect-343.html'
-}.catch(e => {
-            res.json({ message: 'Ups, error' })
-})
+}
 
 router.get('/photooxy1', async (req, res) => {
 	var text = req.query.text
@@ -37,7 +35,7 @@ router.get('/photooxy1', async (req, res) => {
 	var getBuffer = await Buffer.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
-	}.catch(e => {
+	}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 
@@ -58,7 +56,7 @@ router.get('/photooxy2', async (req, res) => {
 	var getBuffer = await Buffer.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
-	}.catch(e => {
+	}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/shadow', async (req, res) => {

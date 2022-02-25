@@ -25,8 +25,7 @@ router.get('/google', async(req, res) => {
 	var google = require('google-it')
 	var result = google({'query' : `${query}`, limit: 20, disableConsole: true }).then(result => {
 	res.json({ result })
-	})
-}).catch(e => {
+	}).catch(e => {
             res.json({ message: 'Ups, error' })
 })     
 
@@ -54,6 +53,8 @@ router.get('/konachan', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/konachan.png', data)
    	await res.sendFile(__path +'/tmp/konachan.png')
+}).catch(e => {
+            res.json({ message: 'Ups, error' })
 })
 router.get('/alphacoders', async(req, res) => {
 	var query = req.query.query
@@ -63,6 +64,8 @@ router.get('/alphacoders', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
+}).catch(e => {
+            res.json({ message: 'Ups, error' })
 })
 router.get('/wallpapercave', async(req, res) => {
 	var query = req.query.query
@@ -72,6 +75,8 @@ router.get('/wallpapercave', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
+}).catch(e => {
+            res.json({ message: 'Ups, error' })
 })
 router.get('/wallpaperscraft', async(req, res) => {
 	var query = req.query.query
@@ -81,6 +86,8 @@ router.get('/wallpaperscraft', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
+}).catch(e => {
+            res.json({ message: 'Ups, error' })
 })
 router.get('/wallpaperflare', async(req, res) => {
 	var query = req.query.query
@@ -90,6 +97,8 @@ router.get('/wallpaperflare', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/image.png', data)
    	await res.sendFile(__path +'/tmp/image.png')
+}).catch(e => {
+            res.json({ message: 'Ups, error' })
 })
 router.get('/tiktok', async(req, res) => {
 	var query = req.query.query

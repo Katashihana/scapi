@@ -124,14 +124,13 @@ router.get('/meme', async (req, res) => {
  }).catch(e => {
             res.json({ message: 'Ups, error' })
 })
-})
+
  ///Bmkg
 router.get('/gempa', async(req, res) => {
  const result = await scrp.gempa()
  res.json({ result })
 }).catch(e => {
             res.json({ message: 'Ups, error' })
-})
 })
 
 module.exports = router

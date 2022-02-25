@@ -29,7 +29,8 @@ router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await tiktok(link)
-		res.json(hasil).catch(e => {
+		res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 	
@@ -63,35 +64,40 @@ router.get('/igdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await igDownload(link)
-		res.json(hasil).catch(e => {
+		res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/igStory', async(req, res) => {
 	var username = req.query.username
 	if (!username) return res.json({ message: 'masukan parameter username' })
 	var hasil = await igStory(username)
-		res.json(hasil).catch(e => {
+		res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/mediafireDl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await mediafireDl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/zippyShare', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await zipi.zippy(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/sfiledl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await sfiledl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/youtube', async(req, res) => {
@@ -134,35 +140,40 @@ router.get('/fbdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await dl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/likeedl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await dl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/twitter', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await hxz.twitter(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/pindl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await pinterestdl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/scdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scdl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/spotifydl', async(req, res) => {
@@ -192,28 +203,32 @@ router.get('/stickerpack', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await stickerDl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/sfiledown', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scrapper.sfiledown(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/anoboydl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scrapper.anoboydl(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 router.get('/fbdown', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await fbdown.getInfo(link)
-	res.json(hasil).catch(e => {
+	res.json(hasil)
+}).catch(e => {
             res.json({ message: 'Ups, error' })
 })
 
