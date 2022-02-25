@@ -29,10 +29,8 @@ router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await tiktok(link)
-		res.json(hasil).catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
+		res.json(hasil).catch(e => {
+            res.json({ message: 'Ups, error' })
 })
 	
 router.get('/tiktoknowm', async(req, res) => {
