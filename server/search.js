@@ -2,6 +2,10 @@ const express = require('express')
 var router = express.Router();
 __path = process.cwd()
 const fs = require('fs')
+const trending = require('@freetube/yt-trending-scraper')
+const traceAPI = require('trace.moe')
+const Client = traceAPI.Client
+const traceClient = new Client();
 const { getBuffer } = require('../lib/function')
 
 //scraper
@@ -135,6 +139,71 @@ router.get('/mui', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await tod.muihalal(query)
+	res.json({ result })
+}) 
+router.get('/youtube/trending/indonesia/default', async(req, res) => {
+	const parameters = {
+    geoLocation: 'ID',
+    parseCreatorOnRise: false,
+    page: 'default'
+}
+	var result = await ytrend.scrape_trending_page(parameters)
+	res.json({ result })
+}) 
+router.get('/youtube/trending/indonesia/music', async(req, res) => {
+	const paramete = {
+    geoLocation: 'ID',
+    parseCreatorOnRise: false,
+    page: 'music'
+}
+	var result = await ytrend.scrape_trending_page(paramete)
+	res.json({ result })
+}) 
+router.get('/youtube/trending/indonesia/gamers', async(req, res) => {
+	const parame = {
+    geoLocation: 'ID',
+    parseCreatorOnRise: false,
+    page: 'gaming'
+}
+	var result = await ytrend.scrape_trending_page(parame)
+	res.json({ result })
+}) 
+router.get('/youtube/trending/indonesia/movie', async(req, res) => {
+	const param = {
+    geoLocation: 'ID',
+    parseCreatorOnRise: false,
+    page: 'movies'
+}
+	var result = await ytrend.scrape_trending_page(param)
+	res.json({ result })
+}) 
+router.get('/wait', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await traceClient.getSimilarFromURL(link)
+	try {
+	res.json(hasil)
+  } catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/playstore', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrp.playstore(query)
+	res.json({ result })
+}) 
+router.get('/kodepos', async(req, res) => {
+	var kota = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter kota' })
+	var result = await scrp.kodepos(kota)
+	res.json({ result })
+}) 
+router.get('/jalantikus', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await scrp.jalantikus(query)
 	res.json({ result })
 }) 
 
