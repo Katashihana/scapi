@@ -195,8 +195,8 @@ router.get('/playstore', async(req, res) => {
 	res.json({ result })
 }) 
 router.get('/kodepos', async(req, res) => {
-	var kota = req.query.query
-	if (!query) return res.json({ message: 'masukan parameter kota' })
+	var kota = req.query.kota
+	if (!kota) return res.json({ message: 'masukan parameter kota' })
 	var result = await scrp.kodepos(kota)
 	res.json({ result })
 }) 
