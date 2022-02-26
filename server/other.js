@@ -36,6 +36,7 @@ router.get('/magernulis1', (req, res) => {
         __path + './magernulis1-after.jpg'
     ])
     await res.sendFile(__path +'./magernulis1-after.jpg')
+})
 
 router.get('/ttp', async(req, res) => {
   var text = req.query.text
