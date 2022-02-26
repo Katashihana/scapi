@@ -16,14 +16,14 @@ router.get('/nulis', async(req, res) => {
 })
 router.get('/magernulis1', (req, res) => {
     var text = req.query.text
-    if (_.isEmpty(text)) return res.status(400).json({ By: 'MFarelS - mfarelsz.xyz', status: 400, message: 'Error. Parameter Salah, Silahkan Masukkan Parameter Text', contoh: 'https://mfarelsz.xyz/api/magernulis1?text=Parel+Gans' })
+    if (!text) return res.json({ 'message': 'masukan parameter text!'})
     var panjangKalimat = text.replace(/(\S+\s*){1,10}/g, '$&\n')
     var panjangBaris = panjangKalimat.split('\n').slice(0, 30).join('\n')
-    var result = process.cwd() + './magernulis1-after.jpg'
+    var result = process.cwd() + '/magernulis1-after.jpg'
     spawn('convert', [
-        __path + './magernulis1-before.jpg',
+        __path + '/magernulis1-before.jpg',
         '-font',
-        __path + './Zahraaa.ttf',
+        __path + '/Zahraaa.ttf',
         '-size',
         '1024x784',
         '-pointsize',
@@ -33,9 +33,9 @@ router.get('/magernulis1', (req, res) => {
         '-annotate',
         '+344+142',
         panjangBaris,
-        __path + './magernulis1-after.jpg'
+        __path + '/magernulis1-after.jpg'
     ])
-       res.sendFile(__path +'./magernulis1-after.jpg')
+       res.sendFile(__path +'/magernulis1-after.jpg')
 })
 
 router.get('/ttp', async(req, res) => {
