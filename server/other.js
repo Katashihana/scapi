@@ -35,7 +35,7 @@ router.get('/magernulis1', (req, res) => {
         panjangBaris,
         __path + './magernulis1-after.jpg'
     ])
-    await res.sendFile(__path +'./magernulis1-after.jpg')
+       res.sendFile(__path +'./magernulis1-after.jpg')
 })
 
 router.get('/ttp', async(req, res) => {
