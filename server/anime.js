@@ -1,3 +1,4 @@
+__path = process.cwd()
 const express = require('express')
 var router = express.Router();
 const axios = require('axios')
@@ -10,16 +11,7 @@ var key = 'Katashi' // Apikey Lu Ngab
 var creatorList = ['Katashi Hana']; // Nama Lu Ngab
 var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // Ini jan diubah
 
-const mynimeku = require('../scraper/mynime')
-const scrapper = require('../scraper/scrapper')
 
-__path = process.cwd()
-var error = __path + '/views/error.html' // Error
-var invalidKey = __path + '/views/invalidKey.html' // Apikey Invalid
-
-async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 loghandler = {
 	notparam: {
@@ -186,6 +178,16 @@ loghandler = {
         creator: `${creator}`,
         message: 'Erorr! Mungkin Sedang dalam perbaikan'
     }
+}
+
+const mynimeku = require('../scraper/mynime')
+const scrapper = require('../scraper/scrapper')
+
+var error = __path + '/views/error.html' // Error
+var invalidKey = __path + '/views/invalidKey.html' // Apikey Invalid
+
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 router.get('/mynimekuSearch', async(req, res) => {
