@@ -189,11 +189,11 @@ loghandler = {
 }
 
 router.get('/mynimekuSearch', async(req, res) => {
-  var apikeyInput = req.query.apikey,
   var query = req.query.query
+  if (!query) return res.json({ message: 'masukan parameter query' })
+  var apikeyInput = req.query.apikey,
   if(!apikeyInput) return res.json(loghandler.notparam)
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!query) return res.json({ message: 'masukan parameter query' })
   var result = await mynimeku.Search(query)
   if (result > 1) return res.json({ message: 'anime not found!' })
   res.json(result)
