@@ -13,6 +13,20 @@ router.get('/css/style.css', async(req, res) => {
 	res.sendFile(__path + '/views/css/style.css')
 })
 
+router.get('/config', (req, res) => {
+    config = {
+        status: true,
+        result: {
+            prefix : 'Multi Prefix',
+            namabot: 'Katashi Bot',
+            namaowner: 'Katashi Hana',
+            instagram: 'k4t4sh1._',
+            github : 'https:\/\/github.com\/',
+        }
+    }
+    res.json(config)
+})
+
 //Kalo page yang di cari engga ada, nanti muncul ini:v
 router.use(function (req, res) {
 res.status(404)
