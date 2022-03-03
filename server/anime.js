@@ -11,7 +11,6 @@ const mynimeku = require('../scraper/mynime')
 const scrapper = require('../scraper/scrapper')
 
 var error = __path + '/views/error.html' // Error
-var invalidKey = __path + '/views/invalidKey.html' // Apikey Invalid
 
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -24,7 +23,7 @@ router.get('/mynimekuSearch', async(req, res) => {
   if (result > 1) return res.json({ message: 'anime not found!' })
   res.json(result)
   .catch(e => {
-         	res.sendFile(error)
+         	res.sendFile(__path + '/views/error.html')
 })
 })
 
