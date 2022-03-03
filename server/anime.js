@@ -22,7 +22,7 @@ router.get('/mynimekuSearch', async(req, res) => {
   var result = await mynimeku.Search(query)
   if (result > 1) return res.json({ message: 'anime not found!' })
   res.json(result)
-  .catch(e => {
+  .catch(404 => {
          	res.sendFile(__path + '/views/error.html')
 })
 })
